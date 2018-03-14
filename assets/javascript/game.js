@@ -3,13 +3,15 @@ let lose = 0;
 let number = 0;
 let playerScore = 0;
 let input;
-let randomNumber = [];
-let values = [12, 1, 4, 7]; 
+let randomNumber = []; 
+let buttonValues = [];
+let randomValues;
 
 
 $("#number").text(number);
-
-
+$("#playerScore").text(playerScore);
+$("#wins").text(win);
+$("#losses").text(lose);
  
 function rando(){ 
   let value = Math.floor(Math.random() * 101) + 20;
@@ -18,20 +20,15 @@ function rando(){
 };
 
 function startGame(){ 
-  $("#wins").text(win);
-  $("#losses").text(lose);
-  $("#playerScore").text(playerScore);
   randomNumber=[];
   rando();
+  buttonValues=[];
+  gen();
   number = randomNumber;
+  playerScore = 0;
+  
   $("#number").text(number);
 };
-
-function resetGame(){
-  win=0;
-  lose=0;
-  $("#randomNumber").text(0);
-}
 
 function add(){
    playerScore = playerScore + input;
@@ -59,6 +56,14 @@ else if ( a < b ){
 } 
 };
 
+function gen(){
+for ( var i=0; i < 4; i++){
+  randomValues = Math.floor(Math.random() * 19); 
+  buttonValues.push(randomValues);
+}
+   console.log(buttonValues);
+};
+
 function resetGame(){
   $("#wins").text(0);
   $("#losses").text(0);
@@ -67,28 +72,28 @@ function resetGame(){
 }
 
 $("#button1").on("click", function(){
-  input = values[0];
+  input = buttonValues[0];
   add();
   eval();
   $("#playerScore").text(playerScore);
 });
 
 $("#button2").on("click", function(){
-  input = values[1];
+  input = buttonValues[1];
   add();
   eval();
   $("#playerScore").text(playerScore);
 });
 
 $("#button3").on("click", function(){
-  input = values[2];
+  input = buttonValues[2];
   add();
   eval();
   $("#playerScore").text(playerScore);
 });
 
 $("#button4").on("click", function(){
-  input = values[3];
+  input = buttonValues[3];
   add();
   eval();
   $("#playerScore").text(playerScore);
