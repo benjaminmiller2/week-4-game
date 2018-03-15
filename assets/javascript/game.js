@@ -1,3 +1,6 @@
+
+$(document).ready(function(){
+
 let win = 0;
 let lose = 0;
 let number = 0;
@@ -12,7 +15,7 @@ $("#number").text(number);
 $("#playerScore").text(playerScore);
 $("#wins").text(win);
 $("#losses").text(lose);
- 
+
 function rando(){ 
   let value = Math.floor(Math.random() * 101) + 20;
   randomNumber.push(value);
@@ -31,7 +34,7 @@ function startGame(){
 };
 
 function add(){
-   playerScore = playerScore + input;
+  playerScore = playerScore + input;
 
 };
 
@@ -46,12 +49,14 @@ else if ( a < b ){
   lose++;
   console.log("youve lost " + lose + " games");
   $("#losses").text(lose);
+  alert("LOSER! You've lost, because you can't math at all.")
   playerScore = 0;
 }
   else {
   win++;
   console.log("youve won " + win + " games");
   $("#wins").text(win);
+  alert("You've won! But don't get cocky, kid. Can you win again?")
   playerScore = 0;
 } 
 };
@@ -61,7 +66,7 @@ for ( var i=0; i < 4; i++){
   randomValues = Math.floor(Math.random() * 19); 
   buttonValues.push(randomValues);
 }
-   console.log(buttonValues);
+  console.log(buttonValues);
 };
 
 function resetGame(){
@@ -71,7 +76,16 @@ function resetGame(){
   $("#number").text(0);
 }
 
+$("#startButton").on("click", function(){
+  startGame()
+} );
+
+$("#clearButton").on("click", function(){
+  resetGame()
+});
+
 $("#button1").on("click", function(){
+  console.log("help")
   input = buttonValues[0];
   add();
   eval();
@@ -97,4 +111,5 @@ $("#button4").on("click", function(){
   add();
   eval();
   $("#playerScore").text(playerScore);
+});
 });
